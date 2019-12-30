@@ -1,7 +1,7 @@
 <!-- Describe task in general -->
 
 <p>
-    Sum two passed ints
+    A give list should be "compressed" in a way so instead of two (or more) equal elemets, staying one after another, we should leave only one in the result array.
 </p>
 
 <p style="text-align: center;">
@@ -10,11 +10,11 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> Two arguments. Both are ints.
+    <strong>Input: </strong> {% if interpreter.slug == "js-node" %}Array{% else %}Iterable{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    <strong>Output: </strong> "Compressed" {% if interpreter.slug == "js-node" %}Array{% else %}Iterable{% endif %}.
 </p>
 
 
@@ -25,28 +25,36 @@
     </p>
 
 {% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">sumTwo(2, 3) == 5
-sumTwo(5, 7) == 12
+<pre class="brush: javascript">conpress([5,
+  5,
+  5,
+  4,
+  5,
+  6,
+  6,
+  5,
+  5,
+  7,
+  8,
+  0,
+  0]) == [5, 4, 5, 6, 5, 7, 8, 0]
+conpress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1]) == [1, 2, 1]
 </pre>
 {% else %}
-<pre class="brush: python">sum_two(2, 3) == 5
-sum_two(5, 7) == 12
+<pre class="brush: python">compress([5,
+  5,
+  5,
+  4,
+  5,
+  6,
+  6,
+  5,
+  5,
+  7,
+  8,
+  0,
+  0]) == [5, 4, 5, 6, 5, 7, 8, 0]
+compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1]) == [1, 2, 1]
 </pre>
 {% endif %}
 </div>
-
-
-<!-- Here you can explain how it can be used in development -->
-<!-- The section is optional -->
-<p class="for_info_only">
-
-    <strong>How it’s used: </strong>
-    <i>(math is used everywhere)</i>
-</p>
-
-<!-- Here you can explain some constraints for input-->
-<!-- The section is optional -->
-<p>
-    <strong>Precondition:</strong>
-    <i>both given ints should be between -1000 and 1000</i>
-</p>
