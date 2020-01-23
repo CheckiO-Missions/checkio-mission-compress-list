@@ -9,7 +9,7 @@ requirejs(['ext_editor_io', 'jquery_190'],
             multipleArguments: true,
             functions: {
                 python: 'compress',
-                js: 'conpress'
+                js: 'compress'
             }
         });
         io.start();

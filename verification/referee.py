@@ -39,7 +39,7 @@ api.add_listener(
         tests=TESTS,
         function_name={
             "python": "compress",
-            "js": "conpress"
+            "js": "compress"
         },
         cover_code={
             'python-3': cover_codes.unwrap_args,
