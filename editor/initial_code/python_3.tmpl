@@ -1,0 +1,27 @@
+{% comment %}New initial code template{% endcomment %}
+{% block env %}from typing import Iterable{% endblock env %}
+
+{% block start %}
+def compress(items: list[int]) -> Iterable[int]:
+    # your code here
+    return []
+{% endblock start %}
+
+{% block example %}
+print('Example:')
+print(list(compress([
+  5, 5, 5,
+  4, 5, 6,
+  6, 5, 5,
+  7, 8, 0,
+  0])))
+{% endblock %}
+
+{% block tests %}
+{% for t in tests %}
+assert {% block call %}list(compress({{t.input|p_args}})){% endblock %} == {% block result %}{{t.answer|p}}{% endblock %}{% endfor %}
+{% endblock %}
+
+{% block final %}
+print("The mission is done! Click 'Check Solution' to earn rewards!")
+{% endblock final %}

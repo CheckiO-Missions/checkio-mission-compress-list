@@ -1,0 +1,30 @@
+<!-- Describe task in general -->
+
+<p>
+    Даний {% if is_js %}масив{% else %}список{% endif %} повинен бути "стиснутий"
+    таким чином, щоб замість двох (або більше) однакових значень підряд було одне
+    значення в результатному {% if is_js %}масиві{% else %}ітеративному об'єкті (список, кортеж, ітератор ...){% endif %}.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Вхідні дані:</strong> {% if is_js %}Масив{% else %}Список{% endif %}.
+</p>
+
+<p>
+    <strong>Вихідні дані:</strong> "Стиснутий" {% if is_js %}масив{% else %}ітеративний об'єкт (список, кортеж, ітератор ...){% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Приклади:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
