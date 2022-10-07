@@ -1,11 +1,11 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        Я уявлення не маю, як розвязати цю місію.
+        Я уявлення не маю, як розв'язати цю місію.
     </div>
     <div class="answer">
         <p>
-            Оскільки твоя функція може повертати будь який ітеративний обєкт <b class="code">Iterable</b>, ти можеш створити простий <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">генератор</a>, щоб рухатися початковим списком <b class="code">items</b>, перевіряти кожне значення за певними умовами і видавати підходящі.
+            Оскільки твоя функція може повертати будь який ітеративний об'єкт <b class="code">Iterable</b>, ти можеш створити простий <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">генератор</a>, щоб рухатися початковим списком <b class="code">items</b>, перевіряти кожне значення за певними умовами і видавати відповідні.
         </p>
     </div>
 </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="answer">
         <p>
-            Використай <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">цикл for</a>, щоб проходити по <b class="code">items</b>. Коли тобі потрібні і індекси і значення для твого кода, більш "пітонічним" вважається використання вбудованої функії <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a>. Вона повертає генератор - обєкт, який генерує (видає) дані по мірі виклику.
+            Використай <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">цикл for</a>, щоб проходити по <b class="code">items</b>. Коли тобі потрібні і індекси, і значення для твого кода, більш "пітонічним" вважається використання вбудованої функції <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a>. Вона повертає генератор - об'єкт, який генерує (видає) дані по мірі виклику.
         </p>
         <pre class="brush: python">
 for ind, val in enumerate(items):
@@ -40,7 +40,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        Що робити далі, з підходящими значеннями?
+        Що робити далі, з потрібними значеннями?
     </div>
     <div class="answer">
         <p>
@@ -63,6 +63,9 @@ for ind, val in enumerate(items):
         </p>
         <p>Ось повне рішення:</p>
         <pre class="brush: python">
+from typing import Iterable
+
+
 def compress(items: list[int]) -> Iterable[int]:
 
     for ind, val in enumerate(items):
@@ -73,7 +76,7 @@ def compress(items: list[int]) -> Iterable[int]:
 </div>
 <div class="question-answer">
     <div class="question">
-        Покажи мені більше розвязків!<br />
+        Покажи мені більше розв'язків!<br />
         Адже я хочу стати справжнім Python Ніндзею!
     </div>
     <div class="answer">
@@ -82,6 +85,7 @@ def compress(items: list[int]) -> Iterable[int]:
             Хоча наше рішення виглядає коротким і простим, воно може бути навіть коротшим, якщо ти використаєш функцію <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a>з модулю <b class="code">itertools</b> стандартної бібліотеки Python.
         </p>
         <pre class="brush: python">
+from typing import Iterable
 from itertools import groupby
 
 
@@ -95,12 +99,13 @@ def compress(items: list[int]) -> Iterable[int]:
     yield from (val for val, _ in groupby(items))
         </pre>
         <p>
-            Якщо ти віддаєш перевагу більш традиційним розвязкам з поверненням повністю заповненого списка, ось інші два розвязки.  
+            Якщо ти віддаєш перевагу більш традиційним розв'язкам з поверненням повністю заповненого списка, ось інші два розв'язки.  
         </p>
         <p>
-            Використай фукнцію <b class="code">reduce</b> зі стандартного модуля <b class="code">functools</b>, почни з порожнього списка і додавай до його значення, які не рівні попередньому.
+            Використай функцію <b class="code">reduce</b> зі стандартного модуля <b class="code">functools</b>, почни з порожнього списка і додавай до його значення, які не рівні попередньому.
         </p>
         <pre class="brush: python">
+from typing import Iterable
 from functools import reduce
 
 
@@ -109,9 +114,13 @@ def compress(items: list[int]) -> Iterable[int]:
     return reduce(lambda a, b: a + [b]*(not a or b != a[-1]), items, [])
         </pre>
         <p>
-            Цей розвязок не потребує жодного імпорту. Створи порожній список, проходь по початковому списку і додавай значення, які не рівні попередньому. Поверни повністю заповнений список.
+            Цей розв'язок не потребує жодного додаткового імпорту. Створи порожній список, проходь по початковому списку і додавай значення, які не рівні попередньому. Поверни повністю заповнений список.
         </p>
         <pre class="brush: python">
+from typing import Iterable
+
+
+
 def compress(items: list[int]) -> Iterable[int]:
 
     result = []
@@ -121,7 +130,7 @@ def compress(items: list[int]) -> Iterable[int]:
             
     return result        
         </pre>
-        <p>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розвязків!</p>
+        <p>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!</p>
     </div>
 </div>
 <div class="question-answer">

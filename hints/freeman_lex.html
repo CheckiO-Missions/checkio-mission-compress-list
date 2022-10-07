@@ -11,7 +11,7 @@
 </div>
 <div class="question-answer">
     <div class="question">
-        What sholud I start from?
+        What should I start from?
     </div>
     <div class="answer">
         <p>
@@ -29,7 +29,7 @@ for ind, val in enumerate(items):
     </div>
     <div class="answer">
         <p>
-            Lets think, in what cases you take an element from the initial list to the result. There are two: it's the first element (index == 0) or it's not equel to the previous element.
+            Lets think, in what cases you take an element from the initial list to the result. There are two: it's the first element (index == 0) or it's not equal to the previous element.
         </p>
         <pre class="brush: python">
 for ind, val in enumerate(items):
@@ -44,7 +44,7 @@ for ind, val in enumerate(items):
     </div>
     <div class="answer">
         <p>
-            Since you are writing a generator, you need to use <a target="_blank" href="https://www.simplilearn.com/tutorials/python-tutorial/yield-in-python">yield</a> keyword.
+            Since you are writing a generator, you need to use <a target="_blank" href="https://www.simplilearn.com/tutorials/python-tutorial/yield-in-python">yield</a> keyword which actually send value "outside" generator.
         </p>
         <pre class="brush: python">
 for ind, val in enumerate(items):
@@ -63,6 +63,9 @@ for ind, val in enumerate(items):
         </p>
         <p>Here is the whole solution:</p>
         <pre class="brush: python">
+from typing import Iterable
+
+
 def compress(items: list[int]) -> Iterable[int]:
 
     for ind, val in enumerate(items):
@@ -79,9 +82,10 @@ def compress(items: list[int]) -> Iterable[int]:
     <div class="answer">
         <p>Sure, grab it!</p>
         <p>
-            Although this solution looks short and easy, it may be even shorter if you use <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> function from Python standart library module <b class="code">itertools</b>.
+            Although this solution looks short and easy, it may be even shorter if you use <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> function from Python standard library module <b class="code">itertools</b>.
         </p>
         <pre class="brush: python">
+from typing import Iterable
 from itertools import groupby
 
 
@@ -98,9 +102,10 @@ def compress(items: list[int]) -> Iterable[int]:
             If you prefer more traditional solutions with returning of some fully filled list, here are another two solutions  
         </p>
         <p>
-            Use <b class="code">reduce</b> function from standart <b class="code">functools</b> module, start from the empty list and fill it with values which are not the same as previous.
+            Use <b class="code">reduce</b> function from standard <b class="code">functools</b> module, start from the empty list and add values which are not the same as previous.
         </p>
         <pre class="brush: python">
+from typing import Iterable
 from functools import reduce
 
 
@@ -109,9 +114,12 @@ def compress(items: list[int]) -> Iterable[int]:
     return reduce(lambda a, b: a + [b]*(not a or b != a[-1]), items, [])
         </pre>
         <p>
-            This solution needs no import. Create empty list, iterate over the initial one and add values, which are not the same as previous. Then return fully filled list.
+            This solution needs no additional import. Create empty list, iterate over the initial one and add values, which are not the same as previous. Then return fully filled list.
         </p>
         <pre class="brush: python">
+from typing import Iterable
+
+
 def compress(items: list[int]) -> Iterable[int]:
 
     result = []
