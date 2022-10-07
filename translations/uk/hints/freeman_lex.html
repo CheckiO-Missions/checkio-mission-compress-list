@@ -1,0 +1,135 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я уявлення не маю, як розвязати цю місію.
+    </div>
+    <div class="answer">
+        <p>
+            Оскільки твоя функція може повертати будь який ітеративний обєкт <b class="code">Iterable</b>, ти можеш створити простий <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">генератор</a>, щоб рухатися початковим списком <b class="code">items</b>, перевіряти кожне значення за певними умовами і видавати підходящі.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        З чого мені почати?
+    </div>
+    <div class="answer">
+        <p>
+            Використай <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">цикл for</a>, щоб проходити по <b class="code">items</b>. Коли тобі потрібні і індекси і значення для твого кода, більш "пітонічним" вважається використання вбудованої функії <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a>. Вона повертає генератор - обєкт, який генерує (видає) дані по мірі виклику.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    ... 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Як написати правильні умови для перевірки значень?
+    </div>
+    <div class="answer">
+        <p>
+            Давай подумаємо, в яких випадках ти береш елемент з початкового списку у результатний. Їх два: це самий перший елемент (індекс == 0) або він не рівний попередньому елементу.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val != items[ind - 1]:
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Що робити далі, з підходящими значеннями?
+    </div>
+    <div class="answer">
+        <p>
+            Оскільки ти пишеш генератор, то маєш використати ключове слово <a target="_blank" href="https://www.simplilearn.com/tutorials/python-tutorial/yield-in-python">yield</a>, яке власне і забезпечує видачу значення "назовні" генератора.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val != items[ind - 1]:
+        yield val
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        То як має виглядати моє остаточне рішення?
+    </div>
+    <div class="answer">
+        <p>
+            Взагалі-то це майже все. Тобі лише слід обгорнути код у вираз функції.
+        </p>
+        <p>Ось повне рішення:</p>
+        <pre class="brush: python">
+def compress(items: list[int]) -> Iterable[int]:
+
+    for ind, val in enumerate(items):
+        if not ind or val != items[ind - 1]:
+            yield val
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажи мені більше розвязків!<br />
+        Адже я хочу стати справжнім Python Ніндзею!
+    </div>
+    <div class="answer">
+        <p>Звісно, тримай!</p>
+        <p>
+            Хоча наше рішення виглядає коротким і простим, воно може бути навіть коротшим, якщо ти використаєш функцію <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a>з модулю <b class="code">itertools</b> стандартної бібліотеки Python.
+        </p>
+        <pre class="brush: python">
+from itertools import groupby
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for val, _ in groupby(items):
+        yield val
+        
+    # те ж саме можна записати інакше:
+
+    yield from (val for val, _ in groupby(items))
+        </pre>
+        <p>
+            Якщо ти віддаєш перевагу більш традиційним розвязкам з поверненням повністю заповненого списка, ось інші два розвязки.  
+        </p>
+        <p>
+            Використай фукнцію <b class="code">reduce</b> зі стандартного модуля <b class="code">functools</b>, почни з порожнього списка і додавай до його значення, які не рівні попередньому.
+        </p>
+        <pre class="brush: python">
+from functools import reduce
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    return reduce(lambda a, b: a + [b]*(not a or b != a[-1]), items, [])
+        </pre>
+        <p>
+            Цей розвязок не потребує жодного імпорту. Створи порожній список, проходь по початковому списку і додавай значення, які не рівні попередньому. Поверни повністю заповнений список.
+        </p>
+        <pre class="brush: python">
+def compress(items: list[int]) -> Iterable[int]:
+
+    result = []
+    for i in items:
+        if not result or i != result[-1]:
+            result.append(i)
+            
+    return result        
+        </pre>
+        <p>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розвязків!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
+</body>
