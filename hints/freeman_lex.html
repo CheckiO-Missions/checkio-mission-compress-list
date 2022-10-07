@@ -4,39 +4,52 @@
         I have no idea how to start solving this mission.
     </div>
     <div class="answer">
-        <p></p>
+        <p>
+            Since your function may return any <b class="code">Iterable</b>, you may create a simple <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">generator</a> to move over the initial <b class="code">items</b>, check each value by some conditions and yield appropriate.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        
+        What sholud I start from?
     </div>
     <div class="answer">
-        <p></p>
+        <p>
+            Use <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> to iterate over the <b class="code">items</b>. When you need both indexes and values for your code, it's a pythonic way to use build-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a> function. Function <b class="code">enumerate()</b> returns generator - an object, that yields data if called.
+        </p>
         <pre class="brush: python">
-
+for ind, val in enumerate(items):
+    ... 
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        
+        How to write correct conditions to check values?
     </div>
     <div class="answer">
-        <p></p>
+        <p>
+            Lets think, in what cases you take an element from the initial list to the result. There are two: it's the first element (index == 0) or it's not equel to the previous element.
+        </p>
         <pre class="brush: python">
-
+for ind, val in enumerate(items):
+    if not ind or val != items[ind - 1]:
+        ...
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        
+        What to do next with suitable value?
     </div>
     <div class="answer">
-        <p></p>
+        <p>
+            Since you are writing a generator, you need to use <a target="_blank" href="https://www.simplilearn.com/tutorials/python-tutorial/yield-in-python">yield</a> keyword.
+        </p>
         <pre class="brush: python">
-
+for ind, val in enumerate(items):
+    if not ind or val != items[ind - 1]:
+        yield val
         </pre>
     </div>
 </div>
@@ -45,10 +58,16 @@
         So, how my final solution should look like?
     </div>
     <div class="answer">
-        <p></p>
-        <p>Here it is:</p>
+        <p>
+            It's actually almost all. You just need to wrap the code into function expression.
+        </p>
+        <p>Here is the whole solution:</p>
         <pre class="brush: python">
+def compress(items: list[int]) -> Iterable[int]:
 
+    for ind, val in enumerate(items):
+        if not ind or val != items[ind - 1]:
+            yield val
         </pre>
     </div>
 </div>
@@ -59,13 +78,35 @@
     </div>
     <div class="answer">
         <p>Sure, grab it!</p>
-        <p></p>
+        <p>
+            Although this solution looks short and easy, it may me even shorter if you use <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> function from Python standart library module itertools.
+        </p>
         <pre class="brush: python">
+from itertools import groupby
 
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for val, _ in groupby(items):
+        yield val
+        
+    # you may write the same differently:
+
+    yield from (val for val, _ in groupby(items))
         </pre>
-        <p></p>
-        <pre class="brush: python">
+        <p>
+            If you prefer more "classic" solutions with returning of some fully filled object like list, here are another two solutions  
+        </p>
+        <p>
 
+        </p>
+        <pre class="brush: python">
+from functools import reduce
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    return reduce(lambda a, b: a + [b]*(not a or b != a[-1]), items, [])
         </pre>
         <p>Click "Best solutions" at mission menu and see a lot of other
         interesting solutions!</p>
