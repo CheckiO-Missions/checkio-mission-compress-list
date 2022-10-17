@@ -1,0 +1,144 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <i>I have no idea how to start solving this mission.</i>
+    </div>
+    <div class="answer">
+        <p>
+            Since your function may return any <b class="code">Iterable</b>, you may create a simple <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">generator</a> to move over the initial <b class="code">items</b>, check each value by some conditions and yield appropriate.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>What should I start from?</i>
+    </div>
+    <div class="answer">
+        <p>
+            Use <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> to iterate over the <b class="code">items</b>. When you need both indexes and values for your code, it's a pythonic way to use built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a> function. Function <b class="code">enumerate()</b> returns generator - an object, that yields data if called.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    ... 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>How to write correct conditions to check values?</i>
+    </div>
+    <div class="answer">
+        <p>
+            Lets think, in what cases you take an element from the initial list to the result. There are two: it's the first element (index == 0) or it's not equal to the previous element.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val != items[ind - 1]:
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>What to do next with suitable value?</i>
+    </div>
+    <div class="answer">
+        <p>
+            Since you are writing a generator, you need to use <a target="_blank" href="https://www.simplilearn.com/tutorials/python-tutorial/yield-in-python">yield</a> keyword which actually send value "outside" generator.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val != items[ind - 1]:
+        yield val
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>So, how my final solution should look like?</i>
+    </div>
+    <div class="answer">
+        <p>
+            It's actually almost all. You just need to wrap the code into function expression.
+        </p>
+        <p>Here is the whole solution:</p>
+        <pre class="brush: python">
+from typing import Iterable
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for ind, val in enumerate(items):
+        if not ind or val != items[ind - 1]:
+            yield val
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Show me more solutions!<br />
+        'Cause I wanna be a real Python Ninnjaa!</i>
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            Although this solution looks short and easy, it may be even shorter if you use <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> function from Python standard library module <b class="code">itertools</b>.
+        </p>
+        <pre class="brush: python">
+from typing import Iterable
+from itertools import groupby
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for val, _ in groupby(items):
+        yield val
+        
+    # you may write the same differently:
+
+    yield from (val for val, _ in groupby(items))
+        </pre>
+        <p>
+            If you prefer more traditional solutions with returning of some fully filled list, here are another two solutions.  
+        </p>
+        <p>
+            Use <b class="code">reduce</b> function from standard <b class="code">functools</b> module, start from the empty list and add values which are not the same as previous.
+        </p>
+        <pre class="brush: python">
+from typing import Iterable
+from functools import reduce
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    return reduce(lambda a, b: a + [b]*(not a or b != a[-1]), items, [])
+        </pre>
+        <p>
+            This solution needs no additional import. Create empty list, iterate over the initial one and add values, which are not the same as previous. Then return fully filled list.
+        </p>
+        <pre class="brush: python">
+from typing import Iterable
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    result = []
+    for i in items:
+        if not result or i != result[-1]:
+            result.append(i)
+            
+    return result        
+        </pre>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other
+        interesting solutions!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Thanks! I know and understand more now! Everything works fine!</i>
+    </div>
+    <div class="answer">
+        Glad to hear it!
+    </div>
+</div>
+</body>

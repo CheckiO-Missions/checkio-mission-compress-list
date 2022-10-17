@@ -1,7 +1,9 @@
 <!-- Describe task in general -->
 
 <p>
-    A given {% if interpreter.slug == "js-node" %}array{% else %}list{% endif %} should be "compressed" in a way so, instead of two (or more) equal elements, staying one after another, there is only one in the result {% if interpreter.slug == "js-node" %}array{% else %}Iterable (list, tuple, iterator ...){% endif %}.
+    A given {% if is_js %}Array{% else %}list{% endif %} should be "compressed"
+    in a way so, instead of two (or more) equal elements, staying one after another,
+    there should be only one in the result {% if is_js %}Array{% else %}Iterable (list, tuple, iterator ...){% endif %}.
 </p>
 
 <p style="text-align: center;">
@@ -10,37 +12,19 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> {% if interpreter.slug == "js-node" %}Array{% else %}List{% endif %}.
+    <strong>Input:</strong> {% if is_js %}Array{% else %}List{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> "Compressed" {% if interpreter.slug == "js-node" %}Array{% else %}Iterable (list, tuple, iterator ...){% endif %}.
+    <strong>Output:</strong> "Compressed" {% if is_js %}Array{% else %}Iterable (list, tuple, iterator ...){% endif %}.
 </p>
 
 
 <!-- Give some usage examples -->
 <div class="for_info_only">
     <p>
-        <strong>Example:</strong>
+        <strong>Examples:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">compress([
-  5, 5, 5,
-  4, 5, 6,
-  6, 5, 5,
-  7, 8, 0,
-  0]) == [5, 4, 5, 6, 5, 7, 8, 0]
-compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1]) == [1, 2, 1]
-</pre>
-{% else %}
-<pre class="brush: python">compress([
-  5, 5, 5,
-  4, 5, 6,
-  6, 5, 5,
-  7, 8, 0,
-  0]) == [5, 4, 5, 6, 5, 7, 8, 0]
-compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1]) == [1, 2, 1]
-</pre>
-{% endif %}
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
