@@ -1,7 +1,7 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        I have no idea how to start solving this mission.
+        <i>I have no idea how to start solving this mission.</i>
     </div>
     <div class="answer">
         <p>
@@ -11,11 +11,11 @@
 </div>
 <div class="question-answer">
     <div class="question">
-        What should I start from?
+        <i>What should I start from?</i>
     </div>
     <div class="answer">
         <p>
-            Use <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> to iterate over the <b class="code">items</b>. When you need both indexes and values for your code, it's a pythonic way to use build-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a> function. Function <b class="code">enumerate()</b> returns generator - an object, that yields data if called.
+            Use <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> to iterate over the <b class="code">items</b>. When you need both indexes and values for your code, it's a pythonic way to use built-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a> function. Function <b class="code">enumerate()</b> returns generator - an object, that yields data if called.
         </p>
         <pre class="brush: python">
 for ind, val in enumerate(items):
@@ -25,7 +25,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        How to write correct conditions to check values?
+        <i>How to write correct conditions to check values?</i>
     </div>
     <div class="answer">
         <p>
@@ -40,7 +40,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        What to do next with suitable value?
+        <i>What to do next with suitable value?</i>
     </div>
     <div class="answer">
         <p>
@@ -55,7 +55,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        So, how my final solution should look like?
+        <i>So, how my final solution should look like?</i>
     </div>
     <div class="answer">
         <p>
@@ -76,8 +76,8 @@ def compress(items: list[int]) -> Iterable[int]:
 </div>
 <div class="question-answer">
     <div class="question">
-        Show me more solutions!<br />
-        'Cause I wanna be a real Python Ninnjaa!
+        <i>Show me more solutions!<br />
+        'Cause I wanna be a real Python Ninnjaa!</i>
     </div>
     <div class="answer">
         <p>Sure, grab it!</p>
@@ -99,7 +99,7 @@ def compress(items: list[int]) -> Iterable[int]:
     yield from (val for val, _ in groupby(items))
         </pre>
         <p>
-            If you prefer more traditional solutions with returning of some fully filled list, here are another two solutions  
+            If you prefer more traditional solutions with returning of some fully filled list, here are another two solutions.  
         </p>
         <p>
             Use <b class="code">reduce</b> function from standard <b class="code">functools</b> module, start from the empty list and add values which are not the same as previous.
@@ -129,13 +129,13 @@ def compress(items: list[int]) -> Iterable[int]:
             
     return result        
         </pre>
-        <p>Click "Best solutions" at mission menu and see a lot of other
-        interesting solutions!</p>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other
+        interesting solutions!</b></p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Thanks! I know and understand more now! Everything works fine!
+        <i>Thanks! I know and understand more now! Everything works fine!</i>
     </div>
     <div class="answer">
         Glad to hear it!
