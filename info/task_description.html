@@ -1,9 +1,9 @@
 <!-- Describe task in general -->
 
 <p>
-    A given {% if is_js %}Array{% else %}list{% endif %} should be "compressed"
+    A given {% if is_js %}Array of numbers{% else %}list of integers{% endif %} should be "compressed"
     in a way so, instead of two (or more) equal elements, staying one after another,
-    there should be only one in the result {% if is_js %}Array{% else %}Iterable (list, tuple, iterator ...){% endif %}.
+    there should be only one in the result {% if is_js %}Array{% else %}Iterable (list, tuple, iterator, generator){% endif %}.
 </p>
 
 <p style="text-align: center;">
@@ -12,11 +12,11 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> {% if is_js %}Array{% else %}List{% endif %}.
+    <strong>Input:</strong> {% if is_js %}Array of numbers{% else %}List of integers{% endif %}.
 </p>
 
 <p>
-    <strong>Output:</strong> "Compressed" {% if is_js %}Array{% else %}Iterable (list, tuple, iterator ...){% endif %}.
+    <strong>Output:</strong> "Compressed" {% if is_js %}Array of numbers{% else %}List or another Iterable (tuple, iterator, generator) of integers{% endif %}.
 </p>
 
 
