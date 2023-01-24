@@ -1,17 +1,17 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        <i>Я уявлення не маю, як розв'язати цю місію.</i>
+        <p>Я уявлення не маю, як розв'язати цю місію.</p>
     </div>
     <div class="answer">
         <p>
-            Оскільки твоя функція може повертати будь який ітеративний об'єкт <b class="code">Iterable</b>, ти можеш створити простий <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">генератор</a>, щоб рухатися початковим списком <b class="code">items</b>, перевіряти кожне значення за певними умовами і видавати відповідні.
+            💡 Оскільки твоя функція може повертати будь який ітеративний об'єкт <b class="code">Iterable</b>, ти можеш створити простий <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">генератор</a>, щоб рухатися початковим списком <b class="code">items</b>, перевіряти кожне значення за певними умовами і видавати відповідні.
         </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>З чого мені почати?</i>
+        <p>З чого мені почати?</p>
     </div>
     <div class="answer">
         <p>
@@ -25,7 +25,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>Як написати правильні умови для перевірки значень?</i>
+        <p>Як написати правильні умови для перевірки значень?</p>
     </div>
     <div class="answer">
         <p>
@@ -40,7 +40,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>Що робити далі з потрібними значеннями?</i>
+        <p>Що робити далі з потрібними значеннями?</p>
     </div>
     <div class="answer">
         <p>
@@ -55,7 +55,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>То як має виглядати моє остаточне рішення?</i>
+        <p>То як має виглядати моє остаточне рішення?</p>
     </div>
     <div class="answer">
         <p>
@@ -63,7 +63,7 @@ for ind, val in enumerate(items):
         </p>
         <p>Ось повне рішення:</p>
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 
 
 def compress(items: list[int]) -> Iterable[int]:
@@ -76,8 +76,8 @@ def compress(items: list[int]) -> Iterable[int]:
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>Покажи мені більше розв'язків!<br />
-        Адже я хочу стати справжнім Python Ніндзею!</i>
+        <p>Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім 🥇 Python Ніндзею!</p>
     </div>
     <div class="answer">
         <p>Звісно, тримай!</p>
@@ -85,7 +85,7 @@ def compress(items: list[int]) -> Iterable[int]:
             Хоча наше рішення виглядає коротким і простим, воно може бути навіть коротшим, якщо ти використаєш функцію <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a>з модулю <b class="code">itertools</b> стандартної бібліотеки Python.
         </p>
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 from itertools import groupby
 
 
@@ -105,7 +105,7 @@ def compress(items: list[int]) -> Iterable[int]:
             Використай функцію <b class="code">reduce</b> зі стандартного модуля <b class="code">functools</b>, почни з порожнього списка і додавай до його значення, які не рівні попередньому.
         </p>
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 from functools import reduce
 
 
@@ -117,8 +117,7 @@ def compress(items: list[int]) -> Iterable[int]:
             Цей розв'язок не потребує жодного додаткового імпорту. Створи порожній список, проходь по початковому списку і додавай значення, які не рівні попередньому. Поверни повністю заповнений список.
         </p>
         <pre class="brush: python">
-from typing import Iterable
-
+from collections.abc import Iterable
 
 
 def compress(items: list[int]) -> Iterable[int]:
@@ -135,10 +134,12 @@ def compress(items: list[int]) -> Iterable[int]:
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>Дякую! Тепер я знаю і розумію більше! Все працює як слід!</i>
+        <p>Дякую! Тепер я знаю і розумію більше! Все працює як слід!</p>
     </div>
     <div class="answer">
-        Приємно це чути!
+        <p>
+            👍 Приємно це чути!
+        </p>
     </div>
 </div>
 </body>

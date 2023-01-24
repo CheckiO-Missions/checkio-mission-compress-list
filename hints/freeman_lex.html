@@ -1,17 +1,17 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        <i>I have no idea how to start solving this mission.</i>
+        <p>I have no idea how to start solving this mission.</p>
     </div>
     <div class="answer">
         <p>
-            Since your function may return any <b class="code">Iterable</b>, you may create a simple <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">generator</a> to move over the initial <b class="code">items</b>, check each value by some conditions and yield appropriate.
+            💡 Since your function may return any <b class="code">Iterable</b>, you may create a simple <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">generator</a> to move over the initial <b class="code">items</b>, check each value by some conditions and yield appropriate.
         </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>What should I start from?</i>
+        <p>What should I start from?</p>
     </div>
     <div class="answer">
         <p>
@@ -25,7 +25,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>How to write correct conditions to check values?</i>
+        <p>How to write correct conditions to check values?</p>
     </div>
     <div class="answer">
         <p>
@@ -40,7 +40,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>What to do next with suitable value?</i>
+        <p>What to do next with suitable value?</p>
     </div>
     <div class="answer">
         <p>
@@ -55,7 +55,7 @@ for ind, val in enumerate(items):
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>So, how my final solution should look like?</i>
+        <p>So, how my final solution should look like?</p>
     </div>
     <div class="answer">
         <p>
@@ -63,7 +63,7 @@ for ind, val in enumerate(items):
         </p>
         <p>Here is the whole solution:</p>
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 
 
 def compress(items: list[int]) -> Iterable[int]:
@@ -76,8 +76,8 @@ def compress(items: list[int]) -> Iterable[int]:
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>Show me more solutions!<br />
-        'Cause I wanna be a real Python Ninnjaa!</i>
+        <p>Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!</p>
     </div>
     <div class="answer">
         <p>Sure, grab it!</p>
@@ -85,7 +85,7 @@ def compress(items: list[int]) -> Iterable[int]:
             Although this solution looks short and easy, it may be even shorter if you use <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> function from Python standard library module <b class="code">itertools</b>.
         </p>
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 from itertools import groupby
 
 
@@ -105,7 +105,7 @@ def compress(items: list[int]) -> Iterable[int]:
             Use <b class="code">reduce</b> function from standard <b class="code">functools</b> module, start from the empty list and add values which are not the same as previous.
         </p>
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 from functools import reduce
 
 
@@ -117,7 +117,7 @@ def compress(items: list[int]) -> Iterable[int]:
             This solution needs no additional import. Create empty list, iterate over the initial one and add values, which are not the same as previous. Then return fully filled list.
         </p>
         <pre class="brush: python">
-from typing import Iterable
+from collections.abc import Iterable
 
 
 def compress(items: list[int]) -> Iterable[int]:
@@ -135,10 +135,10 @@ def compress(items: list[int]) -> Iterable[int]:
 </div>
 <div class="question-answer">
     <div class="question">
-        <i>Thanks! I know and understand more now! Everything works fine!</i>
+        <p>Thanks! I know and understand more now! Everything works fine!</p>
     </div>
     <div class="answer">
-        Glad to hear it!
+        👍 Glad to hear it!
     </div>
 </div>
 </body>
