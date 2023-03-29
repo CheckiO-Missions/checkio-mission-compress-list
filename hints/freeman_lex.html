@@ -62,6 +62,7 @@ for ind, val in enumerate(items):
             It's actually almost all. You just need to wrap the code into function expression.
         </p>
         <p>Here is the whole solution:</p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 
@@ -72,6 +73,7 @@ def compress(items: list[int]) -> Iterable[int]:
         if not ind or val != items[ind - 1]:
             yield val
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -84,6 +86,7 @@ def compress(items: list[int]) -> Iterable[int]:
         <p>
             Although this solution looks short and easy, it may be even shorter if you use <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> function from Python standard library module <b class="code">itertools</b>.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 from itertools import groupby
@@ -98,12 +101,14 @@ def compress(items: list[int]) -> Iterable[int]:
 
     yield from (val for val, _ in groupby(items))
         </pre>
+        </div>
         <p>
             If you prefer more traditional solutions with returning of some fully filled list, here are another two solutions.  
         </p>
         <p>
             Use <b class="code">reduce</b> function from standard <b class="code">functools</b> module, start from the empty list and add values which are not the same as previous.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 from functools import reduce
@@ -113,9 +118,11 @@ def compress(items: list[int]) -> Iterable[int]:
 
     return reduce(lambda a, b: a + [b]*(not a or b != a[-1]), items, [])
         </pre>
+        </div>
         <p>
             This solution needs no additional import. Create empty list, iterate over the initial one and add values, which are not the same as previous. Then return fully filled list.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 
@@ -129,6 +136,7 @@ def compress(items: list[int]) -> Iterable[int]:
             
     return result        
         </pre>
+        </div>
         <p><b>Click "Best solutions" at mission menu and see a lot of other
         interesting solutions!</b></p>
     </div>
