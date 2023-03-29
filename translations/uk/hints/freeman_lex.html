@@ -62,6 +62,7 @@ for ind, val in enumerate(items):
             Взагалі-то це майже все. Тобі лише слід обгорнути код у вираз функції.
         </p>
         <p>Ось повне рішення:</p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 
@@ -72,6 +73,7 @@ def compress(items: list[int]) -> Iterable[int]:
         if not ind or val != items[ind - 1]:
             yield val
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -84,6 +86,7 @@ def compress(items: list[int]) -> Iterable[int]:
         <p>
             Хоча наше рішення виглядає коротким і простим, воно може бути навіть коротшим, якщо ти використаєш функцію <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a>з модулю <b class="code">itertools</b> стандартної бібліотеки Python.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 from itertools import groupby
@@ -98,12 +101,14 @@ def compress(items: list[int]) -> Iterable[int]:
 
     yield from (val for val, _ in groupby(items))
         </pre>
+        </div>
         <p>
             Якщо ти віддаєш перевагу більш традиційним розв'язкам з поверненням повністю заповненого списку, ось інші два розв'язки.  
         </p>
         <p>
             Використай функцію <b class="code">reduce</b> зі стандартного модуля <b class="code">functools</b>, почни з порожнього списка і додавай до його значення, які не рівні попередньому.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 from functools import reduce
@@ -113,9 +118,11 @@ def compress(items: list[int]) -> Iterable[int]:
 
     return reduce(lambda a, b: a + [b]*(not a or b != a[-1]), items, [])
         </pre>
+        </div>
         <p>
             Цей розв'язок не потребує жодного додаткового імпорту. Створи порожній список, проходь по початковому списку і додавай значення, які не рівні попередньому. Поверни повністю заповнений список.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from collections.abc import Iterable
 
@@ -129,6 +136,7 @@ def compress(items: list[int]) -> Iterable[int]:
             
     return result        
         </pre>
+        </div>
         <p><b>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!</b></p>
     </div>
 </div>
