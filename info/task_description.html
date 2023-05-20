@@ -1,9 +1,7 @@
 <!-- Describe task in general -->
 
 <p>
-    A given {% if is_js %}Array{% else %}list{% endif %} should be "compressed"
-    in a way so, instead of two (or more) equal elements, staying one after another,
-    there should be only one in the result {% if is_js %}Array{% else %}Iterable (list, tuple, iterator, generator){% endif %}.
+    A given {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} should be "compressed" in a way so, instead of two (or more) equal elements, staying one after another, there should be only one in the result {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">Iterable</span>{% endif %}.
 </p>
 
 <p style="text-align: center;">
@@ -12,11 +10,11 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> {% if is_js %}An Array{% else %}A list{% endif %}.
+    <strong>Input:</strong> {% if is_js %}An <span translate="repeat">array</span>{% else %}A <span translate="repeat">list</span>{% endif %}.
 </p>
 
 <p>
-    <strong>Output:</strong> "Compressed" {% if is_js %}Array{% else %}List or another Iterable (tuple, iterator, generator){% endif %}.
+    <strong>Output:</strong> "Compressed" {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">List</span> or another <span translate="repeat">Iterable</span> (<span translate="repeat">tuple</span>, <span translate="repeat">iterator</span>, <span translate="repeat">generator</span>){% endif %}.
 </p>
 
 
