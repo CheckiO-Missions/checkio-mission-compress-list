@@ -1,7 +1,7 @@
 <!-- Describe task in general -->
 
 <p>
-    Un<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} doit être "compressé" de manière à ce qu'au lieu de deux (ou plus) éléments égaux, restant l'un après l'autre, il n'y en ait qu'un seul dans le résultat {% if is_js %}<span>tableau</span> <span>(array)</span>{% else %} Iterable{% endif %}.
+    Un {% if is_js %}<span>tableau</span> <span>(array)</span>{% else %}<span>liste</span> <span>(list)</span>{% endif %} doit être "compressé" de manière à ce qu'au lieu de deux (ou plus) éléments égaux, restant l'un après l'autre, il n'y en ait qu'un seul dans le résultat {% if is_js %}<span>tableau</span> <span>(array)</span>{% else %}Iterable{% endif %}.
 </p>
 
 <p style="text-align: center;">
@@ -14,7 +14,7 @@
 </p>
 
 <p>
-   <strong>Sortie:</strong><span>tableau</span> "compressé" {% if is_js %} <span>(array)</span><span> </span>{% else %} <span>Liste</span> <span>(List)</span> ou autre <span>Iterable</span> <span>(tuple</span> <span>(tuple)</span>, <span>iterator</span>, <span>generator</span>){% endif %}.
+   <strong>Sortie:</strong> "Compressé" {% if is_js %}<span>tableau</span> <span>(array)</span>{% else %}<span>liste</span> <span>(list)</span> ou autre <span>Iterable</span> (<span>tuple</span>, <span>iterator</span>, <span>generator</span>){% endif %}.
 </p>
 
 
