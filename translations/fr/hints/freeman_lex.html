@@ -97,7 +97,7 @@ def compress(items: list[int]) -> Iterable[int]:
     for val, _ in groupby(items):
         yield val
         
-    # you may write the same differently:
+    # vous pouvez écrire la même chose différemment :
 
     yield from (val for val, _ in groupby(items))
         </pre>
