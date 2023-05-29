@@ -1,0 +1,28 @@
+<!-- Describe task in general -->
+
+<p>
+    Un<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} doit être "compressé" de manière à ce qu'au lieu de deux (ou plus) éléments égaux, restant l'un après l'autre, il n'y en ait qu'un seul dans le résultat {% if is_js %}<span>tableau</span> <span>(array)</span>{% else %} Iterable{% endif %}.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> {% if is_js %}Un <span>tableau</span> <span>(array)</span>{% else %} Une <span>liste</span> <span>(list)</span>{% endif %}.
+</p>
+
+<p>
+   <strong>Sortie:</strong><span>tableau</span> "compressé" {% if is_js %} <span>(array)</span><span> </span>{% else %} <span>Liste</span> <span>(List)</span> ou autre <span>Iterable</span> <span>(tuple</span> <span>(tuple)</span>, <span>iterator</span>, <span>generator</span>){% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Exemples:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
