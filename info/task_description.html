@@ -1,7 +1,7 @@
 <!-- Describe task in general -->
 
 <p>
-    A given {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} should be "compressed" in a way so, instead of two (or more) equal elements, staying one after another, there should be only one in the result {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">Iterable</span>{% endif %}.
+    A given sequence should be "compressed" in a way so, instead of two (or more) equal elements, staying one after another, there should be only one in the result sequence.
 </p>
 
 <p style="text-align: center;">
@@ -10,7 +10,7 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> {% if is_js %}An <span translate="repeat">array</span>{% else %}A <span translate="repeat">list</span>{% endif %}.
+    <strong>Input:</strong> <span translate="repeat">{% if is_js %}Array{% else %}List{% endif %}</span>.
 </p>
 
 <p>
