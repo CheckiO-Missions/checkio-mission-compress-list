@@ -1,0 +1,28 @@
+<!-- Describe task in general -->
+
+<p>
+    Dana sekwencja powinna zostać "skompresowana" w taki sposób, aby zamiast dwóch (lub więcej) jednakowych elementów występujących jeden po drugim, w sekwencji wynikowej występował tylko jeden.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Dane wejściowe:</strong> {% if is_js %}Array{% else %}List{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> "Skompresowany" {% if is_js %}tablica <span>(array)</span>{% else %} lista <span>(List)</span> lub inny Iterable (krotka <span>(tuple)</span>, iterator, generator){% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Przykłady:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>

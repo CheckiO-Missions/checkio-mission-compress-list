@@ -1,0 +1,151 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>Nie mam pojęcia, jak zacząć rozwiązywać tę misję.</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 Ponieważ Pana funkcja może zwrócić dowolną wartość <b class="code">Iterable</b>, może Pan utworzyć prostą funkcję <a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">generator</a>, aby przejść do początkowej wartości <b class="code">items</b>, sprawdzić każdą wartość za pomocą pewnych warunków i zwrócić odpowiednią wartość.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Od czego powinienem zacząć?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Proszę użyć <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a>, aby iterować po <b class="code">items</b>. Jeśli potrzebują Państwo zarówno indeksów, jak i wartości dla swojego kodu, jest to pythoniczny sposób na użycie wbudowanej funkcji <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a>. Funkcja <b class="code">enumerate()</b> zwraca generator - obiekt, który zwraca dane, jeśli zostanie wywołany.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    ... 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Jak napisać poprawne warunki do sprawdzania wartości?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Proszę się zastanowić, w jakich przypadkach pobiera Pan element z początkowej listy do wyniku. Są dwa: jest to pierwszy element (indeks == 0) lub nie jest równy poprzedniemu elementowi.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val!= items[ind - 1]:
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Co zrobić dalej z odpowiednią wartością?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Ponieważ piszą Państwo generator, należy użyć słowa kluczowego <a target="_blank" href="https://www.simplilearn.com/tutorials/python-tutorial/yield-in-python">yield</a>, które faktycznie wysyła wartość "na zewnątrz" generatora.
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val!= items[ind - 1]:
+        yield val
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Jak więc powinno wyglądać moje ostateczne rozwiązanie?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Właściwie to prawie wszystko. Proszę tylko opakować kod w wyrażenie funkcyjne.
+        </p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for ind, val in enumerate(items):
+        if not ind or val!= items[ind - 1]:
+            yield val
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwym 🥇 Python Ninnjaa!</p>
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę łapać!</p>
+        <p>
+            Chociaż to rozwiązanie wygląda na krótkie i łatwe, może być jeszcze krótsze, jeśli użyją Państwo funkcji <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> z modułu biblioteki standardowej Pythona <b class="code">itertools</b>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+from itertools import groupby
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for val, _ in groupby(items):
+        yield val
+        
+    # you may write the same differently:
+
+    yield from (val for val, _ in groupby(items))
+        </pre>
+        </div>
+        <p>
+            Jeśli wolą Państwo bardziej tradycyjne rozwiązania ze zwracaniem w pełni wypełnionej listy, oto kolejne dwa rozwiązania.  
+        </p>
+        <p>
+            Proszę użyć funkcji <b class="code">reduce</b> ze standardowego modułu <b class="code">functools</b>, zacząć od pustej listy i dodać wartości, które nie są takie same jak poprzednie.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+from functools import reduce
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    return reduce(lambda a, b: a + [b]*(not a or b!= a[-1]), items, [])
+        </pre>
+        </div>
+        <p>
+            To rozwiązanie nie wymaga dodatkowego importu. Proszę utworzyć pustą listę, iterować po początkowej liście i dodawać wartości, które nie są takie same jak poprzednie. Następnie proszę zwrócić w pełni wypełnioną listę.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    result = []
+    for i in items:
+        if not result or i!= result[-1]:
+            result.append(i)
+            
+    return result        
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!</p>
+    </div>
+    <div class="answer">
+        miło mi to słyszeć!
+    </div>
+</div>
+</body>
