@@ -1,0 +1,28 @@
+<!-- Describe task in general -->
+
+<p>
+    对给定序列进行 "压缩"，使结果序列中不再有两个（或多个）相等的元素，而是只有一个元素。
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入</strong> {% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span>.
+</p>
+
+<p>
+   <strong>输出：</strong>"压缩"{% if is_js %}数组<span>(array)</span>{% else %} 列表<span>(List)</span> 或另一个 Iterable<span>(Iterable)</span> (tuple<span>(tuple)</span>, iterator<span>(iterator)</span>, generator<span>(generator)</span>){% endif %} 。
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>举例说明：</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
