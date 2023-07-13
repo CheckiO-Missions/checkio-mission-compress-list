@@ -1,0 +1,151 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>我不知道如何开始解决这项任务。</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡由于您的函数可以返回任何<b class="code">Iterable</b> ，您可以创建一个简单的<a target="_blank" href="https://www.tutorialsteacher.com/python/python-generator">generator</a> ，在初始<b class="code">items</b> ，通过一些条件检查每个值并产生适当的结果。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>我应该从什么开始？</p>
+    </div>
+    <div class="answer">
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for loop</a> 遍历<b class="code">items</b> 。当你的代码同时需要索引和值时，使用内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a> 函数是一种 pythonic 的方法。函数<b class="code">enumerate()</b> 返回生成器--一个对象，如果被调用就会产生数据。
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    ... 
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>如何编写正确的条件来检查数值？</p>
+    </div>
+    <div class="answer">
+        <p>
+            让我们想一想，在什么情况下从初始列表中提取一个元素到结果中。有两种情况：它是第一个元素（索引==0）或者它不等于前一个元素。
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val!= items[ind - 1]:
+        ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>接下来如何处理合适的值呢？</p>
+    </div>
+    <div class="answer">
+        <p>
+            由于你正在编写一个生成器，你需要使用<a target="_blank" href="https://www.simplilearn.com/tutorials/python-tutorial/yield-in-python">yield</a> 关键字，它实际上是将值发送到生成器 "外部"。
+        </p>
+        <pre class="brush: python">
+for ind, val in enumerate(items):
+    if not ind or val!= items[ind - 1]:
+        yield val
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>那么，我的最终解决方案应该是怎样的呢？</p>
+    </div>
+    <div class="answer">
+        <p>
+            实际上几乎是这样。您只需将代码封装到函数表达式中。
+        </p>
+        <p>这就是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for ind, val in enumerate(items):
+        if not ind or val!= items[ind - 1]:
+            yield val
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>告诉我更多的解决方案！<br />
+        因为我想成为一个真正的 🥇 Python Ninnjaa！</p>
+    </div>
+    <div class="answer">
+        <p>当然，抓住它！</p>
+        <p>
+            虽然这个解决方案看起来很简单，但是如果你使用Python标准库模块<b class="code">itertools</b> 中的<a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.groupby">groupby()</a> 函数，它可能会更短。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+from itertools import groupby
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    for val, _ in groupby(items):
+        yield val
+        
+    # you may write the same differently:
+
+    yield from (val for val, _ in groupby(items))
+        </pre>
+        </div>
+        <p>
+            如果你更喜欢传统的解决方案，返回一些完全填充的列表，这里有另外两种解决方案。  
+        </p>
+        <p>
+            使用标准<b class="code">functools</b> 模块中的<b class="code">reduce</b> 函数，从空列表开始，添加与之前不相同的值。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+from functools import reduce
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    return reduce(lambda a, b: a + [b]*(not a or b!= a[-1]), items, [])
+        </pre>
+        </div>
+        <p>
+            此解决方案不需要额外的导入。创建空列表，迭代初始列表并添加与前一个列表不相同的值。然后返回完全填充的列表。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+
+
+def compress(items: list[int]) -> Iterable[int]:
+
+    result = []
+    for i in items:
+        if not result or i!= result[-1]:
+            result.append(i)
+            
+    return result        
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>谢谢！我现在知道并理解得更多了！一切正常！</p>
+    </div>
+    <div class="answer">
+        很高兴听到这个消息！
+    </div>
+</div>
+</body>
