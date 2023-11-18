@@ -1,0 +1,28 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+<p>
+    Eine gegebene Sequenz sollte so "komprimiert" werden, dass anstelle von zwei (oder mehr) gleichen Elementen, die hintereinander stehen, nur noch eines in der Ergebnissequenz vorhanden ist.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> "Komprimiertes" {% if is_js %}Array <span>(array)</span>{% else %} Liste <span>(List)</span> oder ein anderes Iterable (Tupel <span>(tuple)</span>, Iterator <span>(iterator)</span>, Generator <span>(generator)</span>){% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
